@@ -522,6 +522,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#search">Search</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <a href="#contact" class="nav-cta">Let's Talk</a>
@@ -624,7 +625,21 @@
             </div>
         </section>
 
-        <footer>
+        
+    <!-- MLS Search Section -->
+    <section class="mls-search" id="search" style="padding: 6rem 5%; background: var(--navy); color: white; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="section-label" style="color: var(--gold); margin-bottom: 1rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">MLS Integration</div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem;">Let AI Find Your Dream Home</h2>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem; font-size: 1.1rem;">Don't waste hours scrolling. Tell my AI assistant exactly what you're looking for, and it will scan the local MLS to find your perfect match.</p>
+            <div style="background: white; padding: 8px; border-radius: 30px; display: flex; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <input type="text" id="dream-home-input" placeholder="e.g. 3 bed, 2 bath with a pool near downtown..." style="flex: 1; border: none; padding: 15px 20px; font-size: 1rem; outline: none; border-radius: 30px; color: var(--navy);" onkeypress="if(event.key==='Enter')startDreamHomeSearch()">
+                <button onclick="startDreamHomeSearch()" class="btn-primary" style="border-radius: 30px; border: none; cursor: pointer; white-space: nowrap;">Search MLS →</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
             <img src="logo.jpg" alt="Coastal Knot Realty" style="height: 60px; object-fit: contain;">
             <p>© 2026 Celeste Salzberg | Coastal Knot Realty Group | Wilmington, NC</p>
             <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.5;">Preview site — Powered by Muse 🎸</p>
@@ -655,7 +670,7 @@
                 <span onclick="toggleChat()" style="cursor:pointer; font-size: 1.2em;">✖</span>
             </div>
             <div class="chat-messages" id="chat-messages">
-                <div class="msg bot">Hi! I'm Celeste's AI assistant. I can help you find a home, schedule a showing, or answer questions about Wilmington real estate. How can I help you today?</div>
+                <div class="msg bot">Hi! I'm Celeste's AI assistant. I have direct access to the local MLS. Please describe your dream home so we can find it for you!</div>
             </div>
             <div class="chat-input">
                 <input type="text" id="chat-input-text" placeholder="Type your message..." onkeypress="if(event.key==='Enter')sendMessage()">
@@ -669,6 +684,24 @@
     </div>
 
     <script>
+        
+        function startDreamHomeSearch() {
+            const input = document.getElementById('dream-home-input').value;
+            const chatInput = document.getElementById('chat-input-text');
+            const chatWindow = document.getElementById('muse-chat-window');
+
+            // Open chat window
+            chatWindow.style.display = 'flex';
+
+            if (input.trim() !== '') {
+                chatInput.value = input;
+                sendMessage();
+                document.getElementById('dream-home-input').value = '';
+            } else {
+                chatInput.focus();
+            }
+        }
+
         function toggleChat() {
             const win = document.getElementById('muse-chat-window');
             win.style.display = win.style.display === 'none' ? 'flex' : 'none';
