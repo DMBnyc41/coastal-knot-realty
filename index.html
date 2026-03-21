@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celeste Salzberg | Coastal Knot Realty Group | Wilmington NC Real Estate</title>
+    <meta name="description" content="24+ years of real estate experience. Army veteran. Multi-million dollar producer. Your home is your most precious asset — let's protect it together.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a2744;
+            --gold: #c9a961;
+            --cream: #faf8f5;
+            --sand: #e8e2d9;
+            --text: #2d3436;
+            --text-light: #636e72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--navy);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+            padding: 8rem 5% 4rem;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--gold);
+        }
+
+        .hero-text .tagline {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            padding: 1rem 2rem;
+            border: 2px solid var(--navy);
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(145deg, var(--navy), #2d4a6d);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -1rem;
+            right: -1rem;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .credential {
+            background: var(--cream);
+            padding: 0.75rem 1.25rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        /* Services */
+        .services {
+            padding: 6rem 5%;
+            background: var(--navy);
+            color: white;
+        }
+
+        .services-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .services h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            padding: 6rem 5%;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .testimonial cite {
+            font-style: normal;
+            color: var(--text-light);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .contact-form {
+            background: var(--cream);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--sand);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: var(--navy);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-submit:hover {
+            background: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        footer .logo {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Coastal Knot <span>Realty</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#listings">Listings</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Let's Talk</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Your Home Is Your Most <span>Precious Asset</span></h1>
+                <p class="tagline">24 years of experience. Army veteran. Multi-million dollar producer. I don't just sell houses — I help people find home.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">24+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Families Helped</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">$50M+</div>
+                        <div class="stat-label">In Sales</div>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        Schedule a Call →
+                    </a>
+                    <a href="#listings" class="btn-secondary">
+                        View Listings
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder">
+                    [Professional Photo of Celeste]
+                </div>
+                <div class="hero-badge">🎖️ Army Veteran</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div>
+                <div class="section-label">About Celeste</div>
+                <h2>Real Estate Is Personal</h2>
+            </div>
+            <div>
+                <p>I had such a great experience purchasing my first home in 1998 that in 2002, after leaving active duty in the Army, I became a realtor. I feel a connection with people every day — I help them buy and sell their most precious asset: home.</p>
+                
+                <p>From Washington, DC to San Juan, Puerto Rico, and now the beautiful Carolina coast, I bring multifaceted experience to every negotiation. When you work with me, you get someone who's been on every side of the table.</p>
+                
+                <p><strong>What drives me?</strong> The look on my clients' faces when I've made a dream into a reality.</p>
+
+                <div class="credentials">
+                    <span class="credential">🎖️ Army Veteran</span>
+                    <span class="credential">🏆 Multi-Million Dollar Producer</span>
+                    <span class="credential">⭐ Executive Club Member</span>
+                    <span class="credential">📍 DC • Puerto Rico • NC</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="services-header">
+            <div class="section-label" style="color: var(--gold);">What I Do</div>
+            <h2>Full-Service Real Estate</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Buying a Home</h3>
+                <p>First-time buyer or seasoned investor, I'll guide you through every step. From search to closing, you'll never feel lost.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Selling Your Home</h3>
+                <p>Strategic pricing, professional marketing, and skilled negotiation. I get you the best price in the shortest time.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔑</div>
+                <h3>Relocation</h3>
+                <p>Moving to the Wilmington area? I've relocated myself multiple times. Let me make your transition smooth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Listings -->
+    <section class="listings" id="listings" style="padding: 6rem 5%; background: white;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="section-label">Featured Listings</div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--navy);">Wilmington Homes For Sale</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                
+                <!-- Listing 1 -->
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="height: 220px; background: linear-gradient(135deg, #4a90a4, #2d6a7a); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🏠</div>
+                    <div style="padding: 1.5rem;">
+                        <div style="font-size: 1.75rem; font-weight: 700; color: var(--navy);">$385,000</div>
+                        <div style="color: var(--text-light); margin: 0.5rem 0;"><strong>3 bed</strong> • <strong>2.5 bath</strong> • <strong>1,950 sq ft</strong></div>
+                        <div style="color: var(--text);">4705 Mangrove Pl, Wilmington</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sand); font-size: 0.9rem; color: var(--text-light);">Added privacy • Convenient garage • New construction</div>
+                    </div>
+                </div>
+
+                <!-- Listing 2 -->
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="height: 220px; background: linear-gradient(135deg, #c9a961, #a88a3d); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🏡</div>
+                    <div style="padding: 1.5rem;">
+                        <div style="font-size: 1.75rem; font-weight: 700; color: var(--navy);">$579,000</div>
+                        <div style="color: var(--text-light); margin: 0.5rem 0;"><strong>4 bed</strong> • <strong>2.5 bath</strong> • <strong>2,540 sq ft</strong></div>
+                        <div style="color: var(--text);">3701 Amber Dr, Wilmington</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sand); font-size: 0.9rem; color: var(--text-light);">Remodeled kitchen • New cabinetry • 0.34 acre lot</div>
+                    </div>
+                </div>
+
+                <!-- Listing 3 -->
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="height: 220px; background: linear-gradient(135deg, #1a2744, #34495e); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🏘️</div>
+                    <div style="padding: 1.5rem;">
+                        <div style="font-size: 1.75rem; font-weight: 700; color: var(--navy);">$444,000</div>
+                        <div style="color: var(--text-light); margin: 0.5rem 0;"><strong>3 bed</strong> • <strong>2 bath</strong> • <strong>1,888 sq ft</strong></div>
+                        <div style="color: var(--text);">9123 Sedgley Dr, Wilmington</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sand); font-size: 0.9rem; color: var(--text-light);">Split bedroom plan • Huge owners suite • Open today</div>
+                    </div>
+                </div>
+
+                <!-- Listing 4 - Luxury -->
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="height: 220px; background: linear-gradient(135deg, #8b7355, #5d4e37); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">✨</div>
+                    <div style="padding: 1.5rem;">
+                        <div style="font-size: 1.75rem; font-weight: 700; color: var(--navy);">$1,250,000</div>
+                        <div style="color: var(--text-light); margin: 0.5rem 0;"><strong>3 bed</strong> • <strong>3 bath</strong> • <strong>2,931 sq ft</strong></div>
+                        <div style="color: var(--text);">191 HL Smith Rd, Wilmington</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sand); font-size: 0.9rem; color: var(--text-light);">Water views • Main-level bedroom • Tidal creek access</div>
+                    </div>
+                </div>
+
+                <!-- Listing 5 -->
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="height: 220px; background: linear-gradient(135deg, #6b8e7a, #4a6b5a); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🌴</div>
+                    <div style="padding: 1.5rem;">
+                        <div style="font-size: 1.75rem; font-weight: 700; color: var(--navy);">$520,000</div>
+                        <div style="color: var(--text-light); margin: 0.5rem 0;"><strong>3 bed</strong> • <strong>2 bath</strong> • <strong>1,425 sq ft</strong></div>
+                        <div style="color: var(--text);">414 Mohican Trl, Wilmington</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sand); font-size: 0.9rem; color: var(--text-light);">Updated • Move-in ready • Great location</div>
+                    </div>
+                </div>
+
+                <!-- Listing 6 - Historic -->
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="height: 220px; background: linear-gradient(135deg, #9b7653, #7a5a3d); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🏛️</div>
+                    <div style="padding: 1.5rem;">
+                        <div style="font-size: 1.75rem; font-weight: 700; color: var(--navy);">$285,000</div>
+                        <div style="color: var(--text-light); margin: 0.5rem 0;"><strong>3 bed</strong> • <strong>2 bath</strong> • <strong>1,349 sq ft</strong></div>
+                        <div style="color: var(--text);">812 S 8th St, Wilmington</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sand); font-size: 0.9rem; color: var(--text-light);">Historic downtown • Walk to everything • Charming</div>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="btn-primary" style="text-decoration: none;">See All Listings →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <div class="section-label">What Clients Say</div>
+            <blockquote>"Celeste made buying our first home feel like a breeze. She was patient, knowledgeable, and always had our best interests at heart. We couldn't have done it without her."</blockquote>
+            <cite>— Happy Homeowner, Wilmington NC</cite>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <div>
+                <div class="section-label">Get In Touch</div>
+                <h2>Ready to Find Your Home?</h2>
+                <p>Whether you're buying, selling, or just exploring your options, I'd love to hear from you. Let's have a conversation about your goals.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📱</div>
+                        <div>
+                            <strong>Call or Text</strong><br>
+                            <span style="color: var(--text-light);">(910) XXX-XXXX</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <span style="color: var(--text-light);">celeste@coastalknotrealty.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <strong>Serving</strong><br>
+                            <span style="color: var(--text-light);">Wilmington & Cape Fear Region</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label>Phone or Email</label>
+                    <input type="text" placeholder="How can I reach you?">
+                </div>
+                <div class="form-group">
+                    <label>I'm Interested In...</label>
+                    <select>
+                        <option>Buying a Home</option>
+                        <option>Selling My Home</option>
+                        <option>Both Buying and Selling</option>
+                        <option>Just Exploring Options</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tell Me More</label>
+                    <textarea placeholder="What are you looking for? Any questions?"></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message →</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo">Coastal Knot <span style="color: var(--gold);">Realty</span></div>
+        <p>© 2026 Celeste Salzberg | Coastal Knot Realty Group | Wilmington, NC</p>
+        <p style="margin-top: 0.5rem;">Licensed Real Estate Agent in North Carolina</p>
+    </footer>
+</body>
+</html>
