@@ -734,7 +734,7 @@
             win.style.display = win.style.display === 'none' ? 'flex' : 'none';
         }
 
-        function sendMessage() {
+        async function sendMessage() {
             const input = document.getElementById('chat-input-text');
             const text = input.value.trim();
             if (!text) return;
@@ -750,14 +750,50 @@
             input.value = '';
             messages.scrollTop = messages.scrollHeight;
 
-            // Simulate bot thinking then replying
-            setTimeout(() => {
+            // Typing indicator
+            const typingMsg = document.createElement('div');
+            typingMsg.className = 'msg bot';
+            typingMsg.id = 'typing-indicator-chat';
+            typingMsg.style.fontStyle = 'italic';
+            typingMsg.textContent = 'Thinking...';
+            messages.appendChild(typingMsg);
+            messages.scrollTop = messages.scrollHeight;
+
+            try {
+                const response = await fetch('http://localhost:3040/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                const typingElem = document.getElementById('typing-indicator-chat');
+                if (typingElem) typingElem.remove();
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'msg bot';
+                    botMsg.innerHTML = data.reply.replace(/
+/g, '<br>');
+                    messages.appendChild(botMsg);
+                } else {
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'msg bot';
+                    botMsg.style.color = 'red';
+                    botMsg.textContent = 'Connection error with AI server.';
+                    messages.appendChild(botMsg);
+                }
+            } catch (error) {
+                const typingElem = document.getElementById('typing-indicator-chat');
+                if (typingElem) typingElem.remove();
+
                 const botMsg = document.createElement('div');
                 botMsg.className = 'msg bot';
-                botMsg.innerHTML = "<em>(Demo Mode)</em> I am currently being wired up to my Gemini brain by the Muse team! Check back soon to talk to me live. 🎸";
+                botMsg.style.color = 'red';
+                botMsg.textContent = 'Network error. Is the local AI server running?';
                 messages.appendChild(botMsg);
-                messages.scrollTop = messages.scrollHeight;
-            }, 1000);
+            }
+            messages.scrollTop = messages.scrollHeight;
         }
     </script>
 
