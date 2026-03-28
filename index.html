@@ -677,7 +677,7 @@
         function checkPassword() {
             const password = document.getElementById('password-input').value;
             // Password: CelesteRE2026
-            if (password === 'CScoastalknotrealty2026' || password === 'CelesteRE2026') {
+            if (password === 'CScoastalknotrealty2026' || password === 'CelesteRE2026' || password === 'FRANKSamson!!26' || password === 'CELESTEaiweb26!!' || password === 'C21russCHECKIT!') {
                 document.getElementById('password-gate').style.display = 'none';
                 document.getElementById('site-content').style.display = 'block';
             } else {
@@ -734,7 +734,7 @@
             win.style.display = win.style.display === 'none' ? 'flex' : 'none';
         }
 
-        function sendMessage() {
+        async function sendMessage() {
             const input = document.getElementById('chat-input-text');
             const text = input.value.trim();
             if (!text) return;
@@ -750,36 +750,49 @@
             input.value = '';
             messages.scrollTop = messages.scrollHeight;
 
-            // Call live Celeste API
+            // Typing indicator
             const typingMsg = document.createElement('div');
             typingMsg.className = 'msg bot';
-            typingMsg.id = 'typing-indicator';
-            typingMsg.innerHTML = "<em>Celeste is thinking...</em>";
+            typingMsg.id = 'typing-indicator-chat';
+            typingMsg.style.fontStyle = 'italic';
+            typingMsg.textContent = 'Thinking...';
             messages.appendChild(typingMsg);
             messages.scrollTop = messages.scrollHeight;
 
-            fetch('http://celeste.heymuse.ai/api/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: text })
-            })
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('typing-indicator').remove();
+            try {
+                const response = await fetch('http://celeste.heymuse.ai/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                const typingElem = document.getElementById('typing-indicator-chat');
+                if (typingElem) typingElem.remove();
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'msg bot';
+                    botMsg.innerHTML = (data.reply || data.response || data.message || "I'm here to help!").replace(/\n/g, '<br>');
+                    messages.appendChild(botMsg);
+                } else {
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'msg bot';
+                    botMsg.style.color = 'red';
+                    botMsg.textContent = 'Connection error with AI server.';
+                    messages.appendChild(botMsg);
+                }
+            } catch (error) {
+                const typingElem = document.getElementById('typing-indicator-chat');
+                if (typingElem) typingElem.remove();
+
                 const botMsg = document.createElement('div');
                 botMsg.className = 'msg bot';
-                botMsg.textContent = data.response || data.message || "I'm here to help!";
+                botMsg.style.color = 'red';
+                botMsg.textContent = 'Network error. Is the local AI server running?';
                 messages.appendChild(botMsg);
-                messages.scrollTop = messages.scrollHeight;
-            })
-            .catch(() => {
-                document.getElementById('typing-indicator').remove();
-                const botMsg = document.createElement('div');
-                botMsg.className = 'msg bot';
-                botMsg.innerHTML = "Network error. Is the local AI server running?";
-                messages.appendChild(botMsg);
-                messages.scrollTop = messages.scrollHeight;
-            });
+            }
+            messages.scrollTop = messages.scrollHeight;
         }
     </script>
 
