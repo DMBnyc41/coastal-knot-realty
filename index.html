@@ -750,14 +750,36 @@
             input.value = '';
             messages.scrollTop = messages.scrollHeight;
 
-            // Simulate bot thinking then replying
-            setTimeout(() => {
+            // Call live Celeste API
+            const typingMsg = document.createElement('div');
+            typingMsg.className = 'msg bot';
+            typingMsg.id = 'typing-indicator';
+            typingMsg.innerHTML = "<em>Celeste is thinking...</em>";
+            messages.appendChild(typingMsg);
+            messages.scrollTop = messages.scrollHeight;
+
+            fetch('http://celeste.heymuse.ai/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: text })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('typing-indicator').remove();
                 const botMsg = document.createElement('div');
                 botMsg.className = 'msg bot';
-                botMsg.innerHTML = "<em>(Demo Mode)</em> I am currently being wired up to my Gemini brain by the Muse team! Check back soon to talk to me live. 🎸";
+                botMsg.textContent = data.response || data.message || "I'm here to help!";
                 messages.appendChild(botMsg);
                 messages.scrollTop = messages.scrollHeight;
-            }, 1000);
+            })
+            .catch(() => {
+                document.getElementById('typing-indicator').remove();
+                const botMsg = document.createElement('div');
+                botMsg.className = 'msg bot';
+                botMsg.innerHTML = "Network error. Is the local AI server running?";
+                messages.appendChild(botMsg);
+                messages.scrollTop = messages.scrollHeight;
+            });
         }
     </script>
 
